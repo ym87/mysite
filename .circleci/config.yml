@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/mysite
     docker:
-      - image: circleci/python:3.7-stretch-node-browsers # remeber to update those!
+      - image: circleci/python:3.8-stretch-node-browsers # remeber to update those!
     steps:
       - checkout
       # this updates git-lfs to make pre-commit large files check hook work properly
@@ -16,7 +16,7 @@ jobs:
       - run:
           command: sudo chown -R circleci:circleci /usr/local/bin
       - run:
-          command: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
+          command: sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
       - run:
           command: pip install requests pip-tools --upgrade
       
@@ -35,7 +35,7 @@ jobs:
           paths:
             - .venv
             - /usr/local/bin
-            - /usr/local/lib/python3.7/site-packages
+            - /usr/local/lib/python3.8/site-packages
       - restore_cache:
           keys:
             - v1-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
